@@ -34,7 +34,8 @@ Your task is to create a story out of these 3 images, which can be communicated 
 
 The game files are embedded as iframes in newfile.php, which is the location for viewing project files, chat window or starting a game.
 
-*IMPORTANT*
+
+*********************************IMPORTANT**************************************
 Since this app isn't hosted on a server yet, you need to host it using a local server like xampp.
 Link for downloading xampp: https://www.apachefriends.org/download.html
 
@@ -43,7 +44,7 @@ Also, the app needs the creation of certain SQL Tables on the server. The requir
 create database accountsremotecollab;
 
 CREATE TABLE users (
-Id INT(11) AUTO_INCREMENT NOT NULL UNIQUE,
+Id INT(1) AUTO_INCREMENT NOT NULL UNIQUE,
 username VARCHAR(50) PRIMARY KEY,
 password	varchar(255) NOT NULL,
 hash varchar(255) NOT NULL,
@@ -56,15 +57,16 @@ teams	varchar(255) NOT NULL
 );
 
 CREATE TABLE teams (
-teamId INT(11) AUTO_INCREMENT NOT NULL UNIQUE,
-username VARCHAR(50) PRIMARY KEY,
-password	varchar(255) NOT NULL,
-hash varchar(255) NOT NULL,
-first_name varchar(50) NOT NULL,
-last_name	varchar(50) NOT NULL,
-email	varchar(100) UNIQUE NOT NULL,
-active	tinyint(1) NOT NULL DEFAULT 0,
-noOfTeams	int(11) NOT NULL DEFAULT 0,
-teams	varchar(255) NOT NULL
+teamId INT(1) AUTO_INCREMENT NOT NULL UNIQUE,
+teamName varchar(100) PRIMARY KEY,
+members	varchar(255) NOT NULL
+);
+
+CREATE TABLE activestatus (
+username varchar(50) PRIMARY KEY,
+tm datetime NOT NULL,
+status tinyint(1) NOT NULL DEFAULT 0,
+team varchar(100) NOT NULL,
+project varchar(100) NOT NULL
 );
 
